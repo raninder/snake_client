@@ -8,8 +8,15 @@ const connect = function () {
       });
       conn.on("connect", ()=>{
           console.log("connected");
-          conn.write("Name: RKD");
+          //conn.write("Name: RKD");
+          setInterval(function timeout() {
+            conn.write("Name: RKD");
+            conn.write('Move: up');
+          }, 3000);
+         
       });
+      
+
       conn.on('data', function(data) {
         console.log('Received: ' + data);
     });
@@ -19,5 +26,6 @@ const connect = function () {
     
       return conn;
     };
+    
     
 module.exports = {connect};
